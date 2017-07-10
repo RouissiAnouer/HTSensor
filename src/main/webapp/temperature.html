@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ICAM capteurs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+      html {overflow-y: scroll; height: 100%;}
+    </style>
+  </head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/i18n/angular-locale_fr-fr.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/1.1.1/angular-chart.min.js"></script>
+  <script type="text/javascript" src="./Temperature.js"></script>
+  <body ng-app="app" ng-controller="LineCtrl">
+     <header>
+      <div class="navbar navbar-default navbar-custom navbar-static-top">
+        <div class="container">
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">ICAM Capteur</a>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-center">
+              <li class=""><a href="breweries.html">Gestion des capteurs</a></li>
+              <li class=""><a href="temperature.html">Température</a></li>
+              <li class=""><a href="humidite.html">Humidité</a></li>
+			  	
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+        <div class="col-md-6 table-responsive" >
+       
+   			<center><span>Température</span></center>
+          <canvas  id="line" class="chart chart-line" chart-data="data"
+					chart-labels="labels" chart-series="series" chart-options="options"
+					chart-dataset-override="datasetOverride" chart-click="onClick">
+			</canvas>
+		
+        </div>
+        
+        
+       
+        
+  </body>
+</html>

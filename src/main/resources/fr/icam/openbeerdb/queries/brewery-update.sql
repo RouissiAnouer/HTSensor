@@ -1,0 +1,1 @@
+update capteur set Description = ? where ID_capteur = ?

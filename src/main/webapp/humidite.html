@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ICAM capteurs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+      html {overflow-y: scroll; height: 100%;}
+    </style>
+  </head>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/i18n/angular-locale_fr-fr.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/1.1.1/angular-chart.min.js"></script>
+  <script type="text/javascript" src="./humidite.js"></script>
+  <body ng-app="app" ng-controller="LineCtrl">
+     <header>
+      <div class="navbar navbar-default navbar-custom navbar-static-top">
+        <div class="container">
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">ICAM Capteur</a>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-center">
+              <li class=""><a href="breweries.html">Gestion des capteurs</a></li>
+              <!-- <li class=""><a href="beers.html">Consultation des capteurs</a></li> -->
+              <!-- <li class=""><a href="temperature.html">Température</a></li> -->
+              <li class=""><a href="humidite.html">Statistique des capteurs</a></li>
+			  	
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+        <div class="container">
+      <section id="search" class="col-md-6">
+        <form class="form ng-cloak" role="form" name="form" ng-show="selected">
+          <fieldset>
+      
+          <legend ng-show="updating">Statistique du capteur #{{valeur}}</legend>
+            <div class="form-group">
+              	<canvas  id="line" class="chart chart-line" chart-data="data"
+					chart-labels="labels" chart-series="series" chart-options="options"
+					chart-dataset-override="datasetOverride" chart-click="onClick">
+			</canvas>
+			<div class="form-group pull-right">
+               <button type="reset" class="btn btn-default" ng-click="clean()"><strong>Annuler</strong></button>
+               </div>
+             </div>
+          </fieldset>
+        </form>
+      </section>
+      <section id="results" class="col-md-6">
+        <h2>Capteurs <small>({{size}} éléments)</small></h2>
+        <nav aria-label="...">
+          <ul class="pager">
+            <li class="previous"><a class="btn btn-default" ng-click="first()"><span aria-hidden="true" class="glyphicon glyphicon-step-backward"></span> </a></li>
+            <li class="previous"><a class="btn btn-default" ng-click="prev()"><span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span></a></li>
+            <li ng-show="size > 0">{{(offset / length) + 1 | ceil}} / {{size / length | ceil}}</li>
+            <li class="next"><a class="btn btn-default" ng-click="last()"><span aria-hidden="true" class="glyphicon glyphicon-step-forward"></span></a></li>
+            <li class="next"><a class="btn btn-default" ng-click="next()"><span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span></a></li>
+          </ul>
+        </nav>
+        <ul class="list-group" ng-repeat="item in breweries">
+          <li class="list-group-item">
+            <p class="list-group-item-heading">#{{item.ID_capteur}}</p>
+            <p class="list-group-item-text">{{item.Description}}</p>
+            <p class="list-group-item-text text-right">
+              <button type="button" class="btn btn-default" ng-click="select(item)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+              </p>
+          </li>
+        </ul>
+     
+      </section>
+    </div>
+        
+		
+        
+       
+        
+  </body>
+</html>
