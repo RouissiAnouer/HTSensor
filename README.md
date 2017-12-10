@@ -1,2 +1,0 @@
-# openbeerdb
-Application OpenBeer DB
