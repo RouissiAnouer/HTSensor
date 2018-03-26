@@ -1,0 +1,114 @@
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Client :  127.0.0.1
+-- Généré le :  Lun 10 Juillet 2017 à 15:45
+-- Version du serveur :  5.6.17
+-- Version de PHP :  5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `nantes`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `capteur`
+--
+
+CREATE TABLE IF NOT EXISTS `capteur` (
+  `ID_capteur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `Description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`ID_capteur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `capteur`
+--
+
+INSERT INTO `capteur` (`ID_capteur`, `Description`) VALUES
+('AX01', 'capteur de luminositÃ© et de tempÃ©rature .....'),
+('AX02', 'capteur de luminositÃ© et de tempÃ©rature .....'),
+('AX03', 'capteur de luminositÃ© et de tempÃ©rature .....'),
+('AX05', 'capteur de luminositÃ© et de tempÃ©rature .....'),
+('AX06', 'capteur de luminositÃ© et de tempÃ©rature ....'),
+('AX07', 'bonne nuit'),
+('AX08', 'bonjour tout le monde'),
+('AX09', 'Anouer Rouissi');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `donnee`
+--
+
+CREATE TABLE IF NOT EXISTS `donnee` (
+  `ID_capteur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `valeur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `datetime` timestamp NOT NULL,
+  PRIMARY KEY (`ID_capteur`,`type`,`datetime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `donnee`
+--
+
+INSERT INTO `donnee` (`ID_capteur`, `type`, `valeur`, `datetime`) VALUES
+('AX01', 'Humidite', '50.4', '2017-07-09 12:11:13'),
+('AX01', 'Humidite', '30', '2017-07-09 16:28:02'),
+('AX01', 'Humidite', '12', '2017-07-09 16:28:11'),
+('AX01', 'Humidite', '45', '2017-07-09 16:28:20'),
+('AX01', 'Humidite', '73', '2017-07-09 16:28:40'),
+('AX01', 'Temperature', '35', '2017-07-07 14:46:00'),
+('AX01', 'Temperature', '40', '2017-07-09 12:12:41'),
+('AX01', 'Temperature', '13', '2017-07-09 14:32:20'),
+('AX01', 'Temperature', '25', '2017-07-09 14:34:13'),
+('AX01', 'Temperature', '2', '2017-07-09 14:34:29'),
+('AX01', 'Temperature', '55', '2017-07-09 14:38:17'),
+('AX02', 'Humidite', '50', '2017-07-09 12:06:01'),
+('AX02', 'Humidite', '25', '2017-07-10 13:26:29'),
+('AX02', 'Humidite', '33', '2017-07-10 13:26:48'),
+('AX02', 'Temperature', '11', '2017-07-10 13:27:02'),
+('AX02', 'Temperature', '11', '2017-07-10 13:27:06'),
+('AX02', 'Temperature', '33', '2017-07-10 13:27:27'),
+('AX02', 'Temperature', '9', '2017-07-10 13:27:36'),
+('AX03', 'Humidite', '56', '2017-07-10 13:28:12'),
+('AX03', 'Humidite', '9', '2017-07-10 13:28:23'),
+('AX03', 'Humidite', '75', '2017-07-10 13:28:35'),
+('Ax03', 'Temperature', '11', '2017-07-10 13:27:16'),
+('AX03', 'Temperature', '9', '2017-07-10 13:27:52');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `typedonnee`
+--
+
+CREATE TABLE IF NOT EXISTS `typedonnee` (
+  `ID_capteur` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`ID_capteur`,`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Contenu de la table `typedonnee`
+--
+
+INSERT INTO `typedonnee` (`ID_capteur`, `type`) VALUES
+('AX01', 'Temperature'),
+('AX02', 'Humidite');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
